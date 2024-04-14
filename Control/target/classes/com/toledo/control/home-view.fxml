@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="1541.0" style="-fx-background-color: #E6E6E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.toledo.control.controllers.HomeController">
+   <children>
+      <ImageView fitHeight="765.0" fitWidth="635.0" layoutY="115.0">
+         <image>
+            <Image url="@imagenes/DescartesLogo.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#002a87" height="130.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1541.0" />
+      <Label layoutX="500.0" layoutY="-5.0" text="Menu Principal" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="96.0" />
+         </font>
+      </Label>
+      <Button fx:id="guardarButton" layoutX="839.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedGuardarButton" prefHeight="137.0" prefWidth="476.0" style="-fx-background-radius: 10; -fx-background-color: blue;" text="GUARDAR ESTUDIANTE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Button>
+
+      <Button fx:id="verButton" layoutX="839.0" layoutY="668.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedVerButton" prefHeight="137.0" prefWidth="476.0" style="-fx-background-radius: 10; -fx-background-color: orange;" text="VER ESTUDIANTE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Button>
+      <Button fx:id="actualizarButton" layoutX="841.0" layoutY="464.0" mnemonicParsing="false" onMouseClicked="#onMouseClickedActualizarrButton" prefHeight="137.0" prefWidth="476.0" style="-fx-background-radius: 10; -fx-background-color: blue;" text="ACTUALIZAR ESTUDIANTE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="regresarButton" fitHeight="106.0" fitWidth="108.0" layoutX="37.0" layoutY="8.0" onMouseClicked="#onMouseClickedRegresarButton">
+         <image>
+            <Image url="@imagenes/regresar.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
