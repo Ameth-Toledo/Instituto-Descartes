@@ -48,7 +48,6 @@ public class HomeController {
         cerrarVentana();
     }
 
-
     @FXML
     void onMouseClickedGuardarButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("guardar-estudiante-view.fxml"));

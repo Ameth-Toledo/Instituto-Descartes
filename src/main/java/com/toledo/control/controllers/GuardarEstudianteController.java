@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import com.toledo.control.models.Control;
 
 public class GuardarEstudianteController {
 
@@ -67,6 +68,7 @@ public class GuardarEstudianteController {
             Student student = new Student(name, firstName, matricula);
             App.getControl().addAlumno(student);
             App.getControl().addBaseDatos();
+            App.getControl().saveAlumno(student);
         }
     }
 

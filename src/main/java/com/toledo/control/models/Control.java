@@ -30,12 +30,14 @@ public class Control {
     public void updateAlumno(Student student){
         for (DataBase base : basesDeDatos) {
             base.updateStudent(student);
+            System.out.println("Estudiante actualizado en la base de datos: " + base.getClass().getSimpleName());
         }
     }
 
     public void saveAlumno(Student student) {
         for (DataBase base : basesDeDatos){
             base.saveStudent(student);
+            System.out.println("Estudiante en la base de datos: " + base.getClass().getSimpleName());
         }
     }
 }

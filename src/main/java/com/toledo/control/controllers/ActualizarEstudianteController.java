@@ -109,6 +109,7 @@ public class ActualizarEstudianteController {
         }
     }
 
+
     @FXML
     void onMouseClickedRegresarButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("home-view.fxml"));
