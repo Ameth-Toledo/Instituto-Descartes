@@ -11,7 +11,9 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class App extends Application {
+
     public static Control control = new Control();
+
     public static Control getControl() {
         return control;
     }

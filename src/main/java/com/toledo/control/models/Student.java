@@ -12,7 +12,6 @@ public class Student {
         this.name = new SimpleStringProperty(name);
         this.firstName = new SimpleStringProperty(firstName);
         this.matricula = new SimpleStringProperty(matricula);
-
     }
 
     public String getName() {
@@ -45,6 +44,10 @@ public class Student {
 
     public String getMatricula() {
         return matricula.get();
+    }
+
+    public String getFirstName() {
+        return firstName.get();
     }
 
     @Override
