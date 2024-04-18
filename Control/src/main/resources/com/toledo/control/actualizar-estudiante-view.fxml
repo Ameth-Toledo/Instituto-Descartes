@@ -76,7 +76,7 @@
             <Font name="System Bold" size="28.0" />
          </font>
       </Button>
-      <Text layoutX="792.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulta la tabla " underline="true">
+      <Text layoutX="792.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulta la tabla " underline="true">
          <font>
             <Font name="System Bold Italic" size="39.0" />
          </font>
@@ -86,11 +86,6 @@
             <Image url="@imagenes/editar.png" />
          </image>
       </ImageView>
-      <TextField fx:id="matriculaBuscarText" layoutX="792.0" layoutY="169.0" prefHeight="60.0" prefWidth="440.0" promptText="Ingrese matricula la del estudiante" style="-fx-background-radius: 10;">
-         <font>
-            <Font name="System Bold" size="23.0" />
-         </font>
-      </TextField>
       <Label layoutX="14.0" layoutY="847.0" text="Presione ver y luego ingrese la matricula del estudiante para ver detalles">
          <font>
             <Font name="System Bold Italic" size="23.0" />

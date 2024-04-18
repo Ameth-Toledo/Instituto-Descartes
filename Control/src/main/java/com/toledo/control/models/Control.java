@@ -1,21 +1,48 @@
 package com.toledo.control.models;
 
+
 import java.util.ArrayList;
 
 public class Control {
+    private ArrayList<DataBase> listaEstudiantes=new ArrayList<>();
     private DataBase baseDeDatos;
-    private ArrayList<Student> estudiantes=new ArrayList<>();
+    private MySQL mySQL;
+    private  Access access;
+    private SQLite sqLite;
+    public Control(DataBase baseDeDatos1){
+        this.baseDeDatos=baseDeDatos;
+        mySQL=new MySQL();
+        access=new Access();
+        sqLite=new SQLite();
 
-    public Boolean addAlumno(Student student){
-        return estudiantes.add(student);
+        listaEstudiantes.add(mySQL);
+        listaEstudiantes.add(access);
+        listaEstudiantes.add(sqLite);
+
     }
 
-    public void addBaseDatos(){
-        baseDeDatos.addStudent(estudiantes);
+    public void save(Student student){
+        for (DataBase baseDeDatos1:listaEstudiantes){
+            baseDeDatos1.saveStudent(student);
+        }
     }
 
-    public ArrayList<Student> getEstudiantes() {
-        return estudiantes;
+    public void update(Student student){
+        for (DataBase iBaseDeDatos:listaEstudiantes){
+            iBaseDeDatos.updateStude(student);
+        }
     }
 
+
+    public MySQL getMySQL() {
+        return mySQL;
+    }
+
+    public Access getAccess() {
+        return access;
+    }
+
+    public SQLite getSQLite() {
+        return sqLite;
+    }
 }

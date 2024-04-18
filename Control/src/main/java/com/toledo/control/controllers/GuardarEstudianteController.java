@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import com.toledo.control.models.Control;
 
 public class GuardarEstudianteController {
 
@@ -41,6 +42,8 @@ public class GuardarEstudianteController {
     @FXML
     private TextField matriculaText;
 
+    private Control control = App.getControl();
+
     @FXML
     void onMouseClickedRegresarButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("home-view.fxml"));
@@ -56,17 +59,32 @@ public class GuardarEstudianteController {
 
     @FXML
     void onMouseClickedVerButton(MouseEvent event) {
-        String name = nameText.getText();
-        String firstName = lastNameText.getText();
-        String matricula = matriculaText.getText();
-
-        if (name.isEmpty() || firstName.isEmpty() || matricula.isEmpty()) {
-            mostrarAlertaError("Por favor, rellene todos los campos");
-        } else {
-            mostrarAlerta("Alumno registrado exitosamente");
+        if (control != null) {
+            String name = nameText.getText();
+            String firstName = lastNameText.getText();
+            String matricula = matriculaText.getText();
             Student student = new Student(name, firstName, matricula);
-            App.getControl().addAlumno(student);
-            App.getControl().addBaseDatos();
+
+            try {
+                if (control.getSQLite() != null) {
+                    control.getSQLite().saveStudent(student);
+                    mostrarAlerta("Estudiante agregado exitosamente");
+                    System.out.println("Estudiante guardado exitosamente en todas las bases de datos.");
+                }
+                if (control.getAccess() != null) {
+                    control.getAccess().saveStudent(student);
+                    System.out.println("Estudiante guardado exitosamente en todas las bases de datos.");
+                }
+                if (control.getMySQL() != null) {
+                    control.getMySQL().saveStudent(student);
+                    System.out.println("Estudiante guardado exitosamente en todas las bases de datos.");
+                }
+            } catch (Exception e) {
+                mostrarAlertaError("Ocurrio un error al guardar el estudiante");
+                System.err.println("Error al guardar el estudiante: " + e.getMessage());
+            }
+        } else {
+            System.err.println("La instancia de Registro no ha sido inicializada correctamente.");
         }
     }
 

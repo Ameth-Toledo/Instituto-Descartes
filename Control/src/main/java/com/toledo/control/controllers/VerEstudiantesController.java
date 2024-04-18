@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.toledo.control.models.Access;
-import com.toledo.control.models.Control;
-import com.toledo.control.models.DataBase;
-import com.toledo.control.models.Student;
+import com.toledo.control.models.*;
 import com.toledo.control.App;
+import com.toledo.control.models.Control;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -37,6 +35,7 @@ public class VerEstudiantesController {
     @FXML
     private ImageView regresarButton;
 
+    //MySQL
     @FXML
     private TableView<Student> TableMySQL;
 
@@ -49,6 +48,7 @@ public class VerEstudiantesController {
     @FXML
     private TableColumn<Student, String> matriculaSQLColumn;
 
+    //Acces
     @FXML
     private TableView<Student> TableAccess;
 
@@ -61,6 +61,7 @@ public class VerEstudiantesController {
     @FXML
     private TableColumn<Student, String> matriculaAccessColumn;
 
+    //SQLite
     @FXML
     private TableView<Student> TableSQLite;
 
@@ -73,8 +74,11 @@ public class VerEstudiantesController {
     @FXML
     private TableColumn<Student, String> matriculaSQLiteColumn;
 
+
     @FXML
     private TextField matriculaBuscarText;
+
+    private Control control = App.getControl();
 
 
     @FXML
@@ -92,51 +96,24 @@ public class VerEstudiantesController {
 
     @FXML
     void onMouseClickedVerButton(MouseEvent event) {
-        Control registro = App.getControl();
-        if (!registro.getEstudiantes().isEmpty()) {
-            //MySQL
-            TableMySQL.getItems().clear();
-            TableMySQL.getItems().addAll(registro.getEstudiantes());
-            //Access
-            TableAccess.getItems().clear();
-            TableAccess.getItems().addAll(registro.getEstudiantes());
-            //SQLite
-            TableSQLite.getItems().clear();
-            TableSQLite.getItems().addAll(registro.getEstudiantes());
-        }
-        else {
+        MySQL mySQL = new MySQL();
+        SQLite sqLite = new SQLite();
+        Access access = new Access();
+
+        if (control !=null && control.getMySQL()!=null && control.getMySQL().getEstudiantes()!=null) {
+            TableMySQL.getItems().addAll(control.getMySQL().getEstudiantes());
+            TableAccess.getItems().addAll(control.getAccess().getEstudiantes());
+            TableSQLite.getItems().addAll(control.getSQLite().getEstudiantes());
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(null);
-            alert.setContentText("La lista se encuentra vacia.");
+            alert.setContentText("La lista se encuentra vacía.");
             alert.showAndWait();
         }
     }
 
     @FXML
     void initialize() {
-        matriculaBuscarText.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                buscarEstudiantes(newValue);
-            }
-        });
-        configurarColumnas();
-    }
-
-    private void buscarEstudiantes(String matricula) {
-        Control registro = App.getControl();
-        ObservableList<Student> estudiantesFiltrados = FXCollections.observableArrayList();
-        for (Student estudiante : registro.getEstudiantes()) {
-            if (estudiante.getMatricula().contains(matricula)) {
-                estudiantesFiltrados.add(estudiante);
-            }
-        }
-        TableMySQL.setItems(estudiantesFiltrados);
-        TableAccess.setItems(estudiantesFiltrados);
-        TableSQLite.setItems(estudiantesFiltrados);
-    }
-
-    private void configurarColumnas() {
         //Access
         nameAccessColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         apellidoAccessColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());

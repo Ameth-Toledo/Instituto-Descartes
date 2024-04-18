@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.toledo.control.App;
+import com.toledo.control.models.Control;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -34,7 +35,7 @@ public class HomeController {
 
     @FXML
     private ImageView regresarButton;
-
+    private Control control;
     @FXML
     void onMouseClickedActualizarrButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("actualizar-estudiante-view.fxml"));
@@ -47,7 +48,6 @@ public class HomeController {
         stage.show();
         cerrarVentana();
     }
-
 
     @FXML
     void onMouseClickedGuardarButton(MouseEvent event) throws IOException {

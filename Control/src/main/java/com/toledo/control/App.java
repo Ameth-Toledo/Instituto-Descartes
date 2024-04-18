@@ -1,6 +1,7 @@
 package com.toledo.control;
 
 import com.toledo.control.models.Control;
+import com.toledo.control.models.DataBase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,7 +12,9 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class App extends Application {
-    public static Control control = new Control();
+    public static DataBase dataBase;
+
+    public static Control control = new Control(dataBase);
     public static Control getControl() {
         return control;
     }

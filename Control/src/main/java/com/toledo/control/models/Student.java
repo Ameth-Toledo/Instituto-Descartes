@@ -19,6 +19,14 @@ public class Student {
         return name.get();
     }
 
+    public String getFirstName() {
+        return firstName.get();
+    }
+
+    public String getMatricula() {
+        return matricula.get();
+    }
+
     public StringProperty nameProperty() {
         return name;
     }
@@ -41,10 +49,6 @@ public class Student {
 
     public void setMatricula(String matricula) {
         this.matricula.set(matricula);
-    }
-
-    public String getMatricula() {
-        return matricula.get();
     }
 
     @Override
